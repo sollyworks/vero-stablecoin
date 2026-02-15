@@ -1,7 +1,10 @@
+import { Sidebar } from "@/components/sidebar/sidebar";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center p-6">
-      <h1 className="text-2xl font-semibold tracking-tight">Vero Stablecoin</h1>
+    <main className="flex min-h-screen bg-canvas">
+      <Sidebar />
+      <section className="flex-1" aria-label="Main content" />
     </main>
   );
 }
