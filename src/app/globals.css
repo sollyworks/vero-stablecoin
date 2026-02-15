@@ -1,14 +1,77 @@
 @import "tailwindcss";
 
+@theme {
+  /* Typography: raw scale */
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --text-11: 0.6875rem;
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-40: 2.5rem;
+
+  --leading-12: 0.75rem;
+  --leading-14: 0.875rem;
+  --leading-15: 0.9375rem;
+  --leading-16: 1rem;
+  --leading-20: 1.25rem;
+  --leading-24: 1.5rem;
+  --leading-32: 2rem;
+  --leading-40: 2.5rem;
+  --tracking-0: 0em;
+
+  /* Base surfaces */
+  --color-canvas: #f9f7f3;
+  --color-sidebar: #f2efeb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #fbfaf3;
+
+  /* Text */
+  --color-text-primary: #000000;
+  --color-text-secondary: #6f6e68;
+  --color-text-muted: #76746f;
+  --color-text-subtle: #a5a49e;
+
+  /* Borders */
+  --color-border-subtle: #eeebea;
+  --color-border-sidebar: #e4e1dd;
+  --color-border-strong: #d7d3c5;
+  --color-border-warning: #efeada;
+
+  /* Actions */
+  --color-action-primary: #fde993;
+
+  /* Status chips */
+  --color-status-success-bg: #e7f9d8;
+  --color-status-success-fg: #507332;
+  --color-status-warning-bg: #f9f4d8;
+  --color-status-warning-fg: #736132;
+
+  /* Warning panel */
+  --color-warning-bg: #fbfaf3;
+  --color-warning-fg: #908175;
+
+  /* Data viz */
+  --color-data-stable: #659bab;
+  --color-data-non-stable: #8365ab;
+  --color-data-in-route: #ab8f65;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  --background: var(--color-canvas);
+  --foreground: var(--color-text-primary);
 }
 
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
 }
