@@ -26,7 +26,7 @@ function HeaderActionButton({ label, icon, variant }: HeaderActionButtonProps) {
 
 export function PageHeader() {
   return (
-    <header className="flex w-full items-start justify-between gap-4" aria-label="Page header">
+    <header className="flex w-full items-center justify-between gap-4" aria-label="Page header">
       <h1 className="text-24 leading-32 font-semibold tracking-0 text-text-secondary">
         Company Wallet
       </h1>

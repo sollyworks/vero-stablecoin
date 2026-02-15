@@ -114,7 +114,7 @@ export default function Home() {
           </article>
         </div>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(755px,2fr)_minmax(414px,1fr)]">
+        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] 2xl:grid-cols-[minmax(755px,2fr)_minmax(414px,1fr)]">
           <RecentActivity />
           <LiquiditySnapshot />
         </div>
