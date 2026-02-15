@@ -20,7 +20,7 @@ const navigationItems = [
 
 export function Sidebar() {
   return (
-    <aside className="flex h-screen w-[255px] flex-col border-r border-border-sidebar bg-sidebar">
+    <aside className="flex h-full w-[255px] shrink-0 flex-col border-r border-border-sidebar bg-sidebar">
       <header className="overflow-hidden px-4 pb-4 pt-2">
         <div className="flex items-center p-2">
           <Image
