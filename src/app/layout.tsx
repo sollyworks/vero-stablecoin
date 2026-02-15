@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Agentation } from "agentation";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   description: "Vero Stablecoin web app",
 };
 
+const isAgentationEnabled =
+  process.env.NODE_ENV === "development" &&
+  process.env.NEXT_PUBLIC_AGENTATION_ENABLED === "true";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,7 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+        {children}
+        {isAgentationEnabled && <Agentation />}
+      </body>
     </html>
   );
 }
