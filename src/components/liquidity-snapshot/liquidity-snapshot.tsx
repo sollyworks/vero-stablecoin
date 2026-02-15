@@ -42,9 +42,13 @@ export function LiquiditySnapshot() {
           </div>
 
           <div className="flex h-6 overflow-hidden rounded-[6px]">
-            <div className="w-[87.2%] bg-data-stable" />
-            <div className="w-[9.2%] bg-data-non-stable" />
-            <div className="w-[3.6%] bg-data-in-route" />
+            {allocationLegend.map((item) => (
+              <div
+                key={item.label}
+                className={`${item.color}`}
+                style={{ width: item.percent }}
+              />
+            ))}
           </div>
 
           <p className="text-12 leading-16 font-normal tracking-0 text-text-secondary">
