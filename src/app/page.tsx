@@ -60,7 +60,7 @@ export default function Home() {
 
           <article className="relative h-[136px] rounded-2xl border border-border-subtle bg-surface p-6">
             <div className="absolute right-2 top-2">
-              <Badge label="Settled" size="small" tone="positive" />
+              <Badge label="Protect via hedge" size="small" tone="positive" />
             </div>
 
             <div className="flex flex-col gap-4">
@@ -114,7 +114,7 @@ export default function Home() {
           </article>
         </div>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[755px_414px]">
+        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(755px,2fr)_minmax(414px,1fr)]">
           <RecentActivity />
           <LiquiditySnapshot />
         </div>

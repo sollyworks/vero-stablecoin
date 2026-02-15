@@ -85,48 +85,69 @@ export function RecentActivity() {
         </button>
       </header>
 
-      <div className="grid h-8 grid-cols-[188px_165px_96px_1fr] items-center bg-[#f5f3ef] px-4 text-12 leading-14 font-semibold tracking-0 text-text-secondary">
-        <p>Entity / Reference</p>
-        <p>Operational Type</p>
-        <p>Status</p>
-        <p className="text-right">Amount</p>
-      </div>
-
-      <div>
-        {activityItems.map((item, index) => (
-          <div
-            key={`${item.reference}-${index}`}
-            className="grid h-[68px] grid-cols-[188px_165px_96px_1fr] items-start px-4 py-4"
-          >
-            <div className="flex flex-col gap-2">
-              <p className="text-14 leading-16 font-semibold tracking-0 text-text-secondary">
-                {item.reference}
-              </p>
-              <p className="text-12 leading-12 font-semibold tracking-0 text-text-subtle">
-                {item.timestamp}
-              </p>
-            </div>
-
-            <p className="text-14 leading-16 font-medium tracking-0 text-text-secondary">
-              <span className="block">{item.operation[0]}</span>
-              <span className="block">{item.operation[1]}</span>
-            </p>
-
-            <div>
-              <Badge label={item.status} size="small" tone={item.statusTone} />
-            </div>
-
-            <div className="text-right">
-              <p className="text-14 leading-16 font-semibold tracking-0 text-text-primary">
-                {item.amount}
-              </p>
-              <p className="mt-2 text-12 leading-12 font-semibold tracking-0 text-text-subtle">
-                {item.currency}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <table className="w-full table-fixed border-collapse">
+        <thead>
+          <tr className="h-8 bg-[#f5f3ef]">
+            <th
+              className="w-[188px] px-4 text-left text-12 leading-14 font-semibold tracking-0 text-text-secondary"
+              scope="col"
+            >
+              Entity / Reference
+            </th>
+            <th
+              className="w-[165px] px-4 text-left text-12 leading-14 font-semibold tracking-0 text-text-secondary"
+              scope="col"
+            >
+              Operational Type
+            </th>
+            <th
+              className="w-[96px] px-4 text-left text-12 leading-14 font-semibold tracking-0 text-text-secondary"
+              scope="col"
+            >
+              Status
+            </th>
+            <th
+              className="px-4 text-right text-12 leading-14 font-semibold tracking-0 text-text-secondary"
+              scope="col"
+            >
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {activityItems.map((item, index) => (
+            <tr key={`${item.reference}-${index}`} className="h-[68px]">
+              <td className="align-top px-4 py-4">
+                <div className="flex flex-col gap-2">
+                  <p className="text-14 leading-16 font-semibold tracking-0 text-text-secondary">
+                    {item.reference}
+                  </p>
+                  <p className="text-12 leading-12 font-semibold tracking-0 text-text-subtle">
+                    {item.timestamp}
+                  </p>
+                </div>
+              </td>
+              <td className="align-top px-4 py-4">
+                <p className="text-14 leading-16 font-medium tracking-0 text-text-secondary">
+                  <span className="block">{item.operation[0]}</span>
+                  <span className="block">{item.operation[1]}</span>
+                </p>
+              </td>
+              <td className="align-top px-4 py-4">
+                <Badge label={item.status} size="small" tone={item.statusTone} />
+              </td>
+              <td className="align-top px-4 py-4 text-right">
+                <p className="text-14 leading-16 font-semibold tracking-0 text-text-primary">
+                  {item.amount}
+                </p>
+                <p className="mt-2 text-12 leading-12 font-semibold tracking-0 text-text-subtle">
+                  {item.currency}
+                </p>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </article>
   );
 }
