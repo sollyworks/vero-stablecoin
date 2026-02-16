@@ -17,12 +17,13 @@ export function DepositInstructionsCard({
       <div className="flex flex-col gap-8 xl:flex-row xl:items-center xl:gap-10">
         <div className="flex flex-1 flex-col gap-4">
           <div className="flex flex-col gap-6 xl:flex-row xl:items-center xl:justify-between">
-            <div className="overflow-hidden rounded-lg bg-canvas p-[33.5px]">
+            <div className="overflow-hidden rounded-lg bg-canvas p-3 size-40 sm:size-48">
               <Image
                 src="/qrcode-image.svg"
                 alt="Deposit QR code"
-                width={96}
-                height={96}
+                width={192}
+                height={192}
+                className="h-full w-full object-contain"
               />
             </div>
 
