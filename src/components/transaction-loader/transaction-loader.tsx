@@ -32,7 +32,11 @@ export function TransactionLoader({ state = "waiting" }: TransactionLoaderProps)
     <article className="flex items-center justify-center gap-4 rounded-[50px] border border-border-subtle bg-surface px-4 py-2.5 shadow-[0px_8px_24px_0px_rgba(0,0,0,0.1)]">
       {showLoading ? (
         <>
-          <HugeiconsIcon icon={Loading02Icon} size={24} className={`shrink-0 ${loadingColorClassName}`} />
+          <HugeiconsIcon
+            icon={Loading02Icon}
+            size={24}
+            className={`shrink-0 motion-safe:animate-spin ${loadingColorClassName}`}
+          />
           <p className="text-14 leading-20 font-semibold tracking-0 text-text-secondary">
             {isWaiting
               ? "Waiting for network confirmation..."

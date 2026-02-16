@@ -1,16 +1,24 @@
 import { ArrowLeft02Icon, ArrowRight02Icon } from "@hugeicons/core-free-icons";
+import Image from "next/image";
 import { Button } from "@/components/button/button";
 import { FundingMethod } from "@/components/funding-method/funding-method";
 import { PageHeader } from "@/components/page-header/page-header";
-import { Sidebar } from "@/components/sidebar/sidebar";
 import { TreasuryStatus } from "@/components/treasury-status/treasury-status";
 
 export default function AddFundsPage() {
   return (
-    <main className="flex h-dvh overflow-hidden bg-canvas">
-      <Sidebar />
+    <main className="min-h-dvh bg-canvas">
+      <div className="px-6 pt-4">
+        <Image
+          src="/vero-logo.svg"
+          alt="Vero"
+          width={76}
+          height={22}
+          priority
+        />
+      </div>
       <section
-        className="min-h-0 flex-1 overflow-y-auto px-8 pb-6 pt-4"
+        className="mx-auto w-full max-w-[1120px] px-6 pb-6 pt-6 lg:px-8"
         aria-label="Main content"
       >
         <PageHeader
