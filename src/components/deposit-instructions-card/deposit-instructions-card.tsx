@@ -1,17 +1,26 @@
 "use client";
 
-import { Copy01Icon, Link04Icon, Wallet03Icon } from "@hugeicons/core-free-icons";
+import {
+  ChartRelationshipIcon,
+  Copy01Icon,
+  Link04Icon,
+  Wallet03Icon,
+} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/button/button";
 
+type DepositInstructionsCardState = "empty" | "filled";
+
 type DepositInstructionsCardProps = {
+  state?: DepositInstructionsCardState;
   networkLabel?: string;
   address?: string;
 };
 
 export function DepositInstructionsCard({
+  state = "filled",
   networkLabel = "Ethereum ERC-20",
   address = "0x71C7656EC7ab88b098defB751B7401B...",
 }: DepositInstructionsCardProps) {
@@ -58,6 +67,24 @@ export function DepositInstructionsCard({
       }
     }
   };
+
+  if (state === "empty") {
+    return (
+      <article className="flex h-[338px] items-center justify-center rounded-2xl border border-border-subtle bg-surface p-6">
+        <div className="flex w-full max-w-[436px] flex-col items-center gap-4">
+          <div className="rounded-[72.727px] bg-canvas p-[14.5px]">
+            <HugeiconsIcon icon={ChartRelationshipIcon} size={32} className="shrink-0 text-text-secondary" />
+          </div>
+          <p className="text-center text-[18px] leading-24 font-bold tracking-0 text-text-primary">
+            Select a Network
+          </p>
+          <p className="w-[204px] text-center text-14 leading-20 font-medium tracking-0 text-text-secondary">
+            Select a network to see the deposit instructions.
+          </p>
+        </div>
+      </article>
+    );
+  }
 
   return (
     <article className="rounded-2xl border border-border-subtle bg-surface p-6">
