@@ -8,6 +8,7 @@ type SelectNetworkCardProps = {
   estimatedTime: string;
   supportedTokens?: string;
   isSelected?: boolean;
+  onSelect?: () => void;
 };
 
 export function SelectNetworkCard({
@@ -18,13 +19,24 @@ export function SelectNetworkCard({
   estimatedTime,
   supportedTokens = "USDC, USDT",
   isSelected = false,
+  onSelect,
 }: SelectNetworkCardProps) {
-  const cardClassName = isSelected
+  const cardStateClassName = isSelected
     ? "border-black bg-[#fffcf2]"
     : "border-border-subtle bg-surface hover:border-black";
 
   return (
-    <article className={`flex flex-col gap-6 rounded-2xl border p-4 ${cardClassName}`}>
+    <button
+      type="button"
+      aria-pressed={isSelected}
+      data-state={isSelected ? "selected" : "default"}
+      className={[
+        "flex flex-col gap-6 rounded-2xl border p-4 text-left transition-colors duration-150",
+        "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/20 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas",
+        cardStateClassName,
+      ].join(" ")}
+      onClick={onSelect}
+    >
       <div className="flex w-[143px] flex-col gap-4">
         <div className="flex items-center gap-3">
           <Image
@@ -64,6 +76,6 @@ export function SelectNetworkCard({
           </p>
         </div>
       </div>
-    </article>
+    </button>
   );
 }

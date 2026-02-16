@@ -1,6 +1,9 @@
+"use client";
+
 import { Copy01Icon, Link04Icon, Wallet03Icon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/button/button";
 
 type DepositInstructionsCardProps = {
@@ -12,6 +15,50 @@ export function DepositInstructionsCard({
   networkLabel = "Ethereum ERC-20",
   address = "0x71C7656EC7ab88b098defB751B7401B...",
 }: DepositInstructionsCardProps) {
+  const [isCopied, setIsCopied] = useState(false);
+  const copiedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (copiedTimeoutRef.current) {
+        clearTimeout(copiedTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const showCopiedState = () => {
+    setIsCopied(true);
+
+    if (copiedTimeoutRef.current) {
+      clearTimeout(copiedTimeoutRef.current);
+    }
+
+    copiedTimeoutRef.current = setTimeout(() => {
+      setIsCopied(false);
+    }, 1600);
+  };
+
+  const copyAddressToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(address);
+      showCopiedState();
+      return;
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = address;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.append(textArea);
+      textArea.select();
+      const copySucceeded = document.execCommand("copy");
+      textArea.remove();
+
+      if (copySucceeded) {
+        showCopiedState();
+      }
+    }
+  };
+
   return (
     <article className="rounded-2xl border border-border-subtle bg-surface p-6">
       <div className="flex flex-col gap-8 xl:flex-row xl:items-center xl:gap-10">
@@ -42,13 +89,26 @@ export function DepositInstructionsCard({
                 <p className="text-14 leading-20 font-semibold tracking-0 text-text-secondary">
                   {address}
                 </p>
-                <button
-                  type="button"
-                  className="flex items-center rounded-[50px] bg-surface p-2"
-                  aria-label="Copy deposit address"
-                >
-                  <HugeiconsIcon icon={Copy01Icon} size={16} className="shrink-0 text-text-secondary" />
-                </button>
+                <div className="relative">
+                  <button
+                    type="button"
+                    className="flex cursor-pointer items-center rounded-[50px] bg-surface p-2"
+                    aria-label="Copy deposit address"
+                    onClick={copyAddressToClipboard}
+                  >
+                    <HugeiconsIcon icon={Copy01Icon} size={16} className="shrink-0 text-text-secondary" />
+                  </button>
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    className={[
+                      "pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 rounded-md bg-black px-2 py-1 text-12 leading-14 font-medium tracking-0 text-white transition-all duration-150",
+                      isCopied ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0",
+                    ].join(" ")}
+                  >
+                    Copied
+                  </span>
+                </div>
               </div>
             </div>
           </div>
