@@ -1,8 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
-const loadingIconConvertingSrc = "https://www.figma.com/api/mcp/asset/3234ee90-8803-4303-bdf8-2083c1d43ee1";
-const loadingIconWaitingOrConfirmingSrc = "https://www.figma.com/api/mcp/asset/531a719d-6de4-4a22-ae8c-40cd60004977";
-const informationDiamondSolidSrc = "https://www.figma.com/api/mcp/asset/8c2bc26d-9728-4b05-a447-66c85cc12553";
-const checkmarkBadgeSolidSrc = "https://www.figma.com/api/mcp/asset/1962713a-a60b-4092-a0bc-7c7417062012";
+import {
+  CheckmarkBadge01Icon,
+  InformationDiamondIcon,
+} from "@hugeicons-pro/core-solid-standard";
+import {
+  Loading02Icon,
+} from "@hugeicons-pro/core-solid-rounded";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 type TransactionLoaderState =
   | "waiting"
@@ -23,20 +26,13 @@ export function TransactionLoader({ state = "waiting" }: TransactionLoaderProps)
   const isError = state === "error";
 
   const showLoading = isWaiting || isConfirming || isConverting;
-  const loadingIconSrc = isWaiting || isConfirming
-    ? loadingIconWaitingOrConfirmingSrc
-    : loadingIconConvertingSrc;
+  const loadingColorClassName = isWaiting || isConfirming ? "text-[#e2be39]" : "text-[#228be6]";
 
   return (
     <article className="flex items-center justify-center gap-4 rounded-[50px] border border-border-subtle bg-surface px-4 py-2.5 shadow-[0px_8px_24px_0px_rgba(0,0,0,0.1)]">
       {showLoading ? (
         <>
-          <img
-            src={loadingIconSrc}
-            alt=""
-            className="size-6 shrink-0"
-            aria-hidden="true"
-          />
+          <HugeiconsIcon icon={Loading02Icon} size={24} className={`shrink-0 ${loadingColorClassName}`} />
           <p className="text-14 leading-20 font-semibold tracking-0 text-text-secondary">
             {isWaiting
               ? "Waiting for network confirmation..."
@@ -74,11 +70,10 @@ export function TransactionLoader({ state = "waiting" }: TransactionLoaderProps)
 
       {isSuccess ? (
         <>
-          <img
-            src={checkmarkBadgeSolidSrc}
-            alt=""
-            className="size-6 shrink-0"
-            aria-hidden="true"
+          <HugeiconsIcon
+            icon={CheckmarkBadge01Icon}
+            size={24}
+            className="shrink-0 text-[#16a34a]"
           />
           <p className="text-14 leading-20 font-semibold tracking-0 text-text-secondary">
             Funds Successfully Added to Treasury
@@ -88,11 +83,10 @@ export function TransactionLoader({ state = "waiting" }: TransactionLoaderProps)
 
       {isError ? (
         <>
-          <img
-            src={informationDiamondSolidSrc}
-            alt=""
-            className="size-6 shrink-0"
-            aria-hidden="true"
+          <HugeiconsIcon
+            icon={InformationDiamondIcon}
+            size={24}
+            className="shrink-0 text-[#dc2626]"
           />
           <p className="text-14 leading-20 font-semibold tracking-0 text-text-secondary">
             Routing Unavailable
