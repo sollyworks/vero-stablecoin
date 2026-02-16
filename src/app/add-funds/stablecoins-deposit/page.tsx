@@ -1,15 +1,23 @@
+import Image from "next/image";
 import { DepositInstructionsCard } from "@/components/deposit-instructions-card/deposit-instructions-card";
 import { PageHeader } from "@/components/page-header/page-header";
 import { SelectNetworkCard } from "@/components/select-network-card/select-network-card";
-import { Sidebar } from "@/components/sidebar/sidebar";
 import { TransactionLoader } from "@/components/transaction-loader/transaction-loader";
 
 export default function StablecoinsDepositPage() {
   return (
-    <main className="flex h-dvh overflow-hidden bg-canvas">
-      <Sidebar />
+    <main className="min-h-dvh bg-canvas">
+      <div className="px-6 pt-4">
+        <Image
+          src="/vero-logo.svg"
+          alt="Vero"
+          width={76}
+          height={22}
+          priority
+        />
+      </div>
       <section
-        className="min-h-0 flex-1 overflow-y-auto px-8 pb-32 pt-4"
+        className="mx-auto w-full max-w-[1120px] px-6 pb-32 pt-6 lg:px-8"
         aria-label="Main content"
       >
         <PageHeader
@@ -60,7 +68,7 @@ export default function StablecoinsDepositPage() {
 
       </section>
 
-      <div className="pointer-events-none fixed bottom-8 left-[calc(50%+127.5px)] z-20 -translate-x-1/2">
+      <div className="pointer-events-none fixed bottom-8 left-1/2 z-20 -translate-x-1/2">
         <div className="pointer-events-auto">
           <TransactionLoader state="waiting" />
         </div>
