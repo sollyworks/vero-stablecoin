@@ -40,7 +40,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-2 grid gap-2 xl:grid-cols-4">
+        <div className="mt-2 grid gap-2 xl:grid-cols-3">
           <article className="h-[136px] rounded-2xl border border-border-subtle bg-surface p-6">
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
@@ -96,22 +96,6 @@ export default function Home() {
             </div>
           </article>
 
-          <article className="h-[136px] rounded-2xl border border-border-subtle bg-surface p-6">
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-col gap-2">
-                <p className="text-12 leading-12 font-semibold tracking-0 text-text-secondary">
-                  Hedge Coverage %
-                </p>
-                <p className="text-20 leading-24 font-semibold tracking-0 text-text-primary">
-                  100%
-                </p>
-              </div>
-
-              <p className="text-12 leading-14 font-semibold tracking-0 text-status-success-fg">
-                No FX Exposure
-              </p>
-            </div>
-          </article>
         </div>
 
         <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] 2xl:grid-cols-[minmax(755px,2fr)_minmax(414px,1fr)]">
