@@ -39,6 +39,7 @@ export default function StablecoinsDepositPage() {
     null,
   );
   const [showTransactionLoader, setShowTransactionLoader] = useState(false);
+  const activeNetwork = NETWORKS.find((network) => network.id === selectedNetwork);
 
   return (
     <main className="min-h-dvh bg-canvas">
@@ -92,7 +93,10 @@ export default function StablecoinsDepositPage() {
             Deposit Instructions
           </h2>
           <div className="mt-4">
-            <DepositInstructionsCard />
+            <DepositInstructionsCard
+              state={activeNetwork ? "filled" : "empty"}
+              networkLabel={activeNetwork ? `${activeNetwork.networkName} ${activeNetwork.networkType}` : undefined}
+            />
           </div>
         </section>
 
